@@ -6,6 +6,7 @@ const cssLinter = require(`gulp-stylelint`);
 const jsLinter = require(`gulp-eslint`);
 const htmlCompressor = require(`gulp-htmlmin`);
 const jsCompressor = require(`gulp-uglify`);
+const cssCompressor = require(`gulp-uglifycss`);
 let validateHTML = () => {
     return src(`html/*.html`)
         .pipe(htmlValidator());
@@ -35,6 +36,11 @@ let compressJS = () => {
         .pipe(jsCompressor())
         .pipe(dest(`prod/js/`));
 };
+let compressCSS = () => {
+    return src(`css/*.css`)
+	.pipe(cssCompressor())
+	.pipe(dest(`prod/css/`));
+};
 let serve = () => {
     browserSync({
         notify: true,
@@ -54,4 +60,5 @@ exports.lintCSS = lintCSS;
 exports.lintJS = lintJS;
 exports.compressHTML = compressHTML;
 exports.compressJS = compressJS;
+exports.compressCSS = compressCSS;
 exports.default = serve;
