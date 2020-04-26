@@ -35,4 +35,6 @@ window.onload = () => {
 
     ounces.addEventListener(`input`,ounceInput);
     riceSelector.addEventListener(`input`,typeInput);
+
+    updateRecipe(riceType, ounces.value);
 };
