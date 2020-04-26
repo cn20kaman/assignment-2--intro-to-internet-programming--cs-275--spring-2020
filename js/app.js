@@ -8,4 +8,11 @@ window.onload = () => {
     const ounceInput = function(e){
         updateRecipe(riceType, e.target.value);
     };
+
+    const typeInput = function(e){
+        title.innerHTML = e.target.value;
+        riceType=e.target.value;
+        updateRecipe(e.target.value);
+        ounces.value = 1;
+    };
 };
