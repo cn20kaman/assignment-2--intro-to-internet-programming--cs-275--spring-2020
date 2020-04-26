@@ -1,6 +1,11 @@
 const { src, watch, dest, series } = require(`gulp`);
 const browserSync = require(`browser-sync`);
 const reload = browserSync.reload;
+const htmlValidator = require(`gulp-html`);
+let validateHTML = () => {
+    return src(`html/*.html`)
+        .pipe(htmlValidator());
+};
 let serve = () => {
     browserSync({
         notify: true,
@@ -15,4 +20,5 @@ let serve = () => {
 
     watch([`html/**/*.html`,`css/*.css`,`js/*.js`]).on(`change`, reload);
 };
+exports.validateHTML = validateHTML;
 exports.default = serve;
