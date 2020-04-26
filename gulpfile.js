@@ -8,10 +8,13 @@ const babel = require(`gulp-babel`);
 const htmlCompressor = require(`gulp-htmlmin`);
 const jsCompressor = require(`gulp-uglify`);
 const cssCompressor = require(`gulp-uglifycss`);
+
+
 let validateHTML = () => {
     return src(`html/*.html`)
         .pipe(htmlValidator());
 };
+
 let lintCSS = () => {
     return src(`css/*.css`)
         .pipe(cssLinter({
@@ -21,32 +24,38 @@ let lintCSS = () => {
             ]
         }));
 };
+
 let lintJS = () => {
     return src(`js/*.js`)
         .pipe(jsLinter())
         .pipe(jsLinter.formatEach(`compact`, process.stderr));
 };
+//Prod Only
 let compressHTML = () => {
     return src(`html/*.html`)
         .pipe(htmlCompressor({collapseWhitespace: true}))
         .pipe(dest(`prod/html`));
 };
+//Prod Only
 let compressJS = () => {
     return src(`js/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
         .pipe(dest(`prod/js/`));
 };
+
 let compressCSS = () => {
     return src(`css/*.css`)
 	.pipe(cssCompressor())
 	.pipe(dest(`prod/css/`));
 };
+
 let transpileJSForDev = () => {
     return src(`js/*.js`)
         .pipe(babel())
         .pipe(dest(`temp/js/`));
 };
+//Prod Only
 let transpileJSForProd = () => {
     return src(`js/*.js`)
         .pipe(babel())
@@ -54,6 +63,7 @@ let transpileJSForProd = () => {
         .pipe(dest(`prod/js/`));
 
 };
+
 let serve = () => {
     browserSync({
         notify: true,
@@ -68,6 +78,9 @@ let serve = () => {
 
     watch([`html/**/*.html`,`css/*.css`,`js/*.js`]).on(`change`, reload);
 };
+
+
+
 exports.validateHTML = validateHTML;
 exports.lintCSS = lintCSS;
 exports.lintJS = lintJS;
