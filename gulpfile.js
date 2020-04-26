@@ -3,6 +3,7 @@ const browserSync = require(`browser-sync`);
 const reload = browserSync.reload;
 const htmlValidator = require(`gulp-html`);
 const cssLinter = require(`gulp-stylelint`);
+const jsLinter = require(`gulp-eslint`);
 let validateHTML = () => {
     return src(`html/*.html`)
         .pipe(htmlValidator());
@@ -15,6 +16,11 @@ let lintCSS = () => {
                 {formatter: `verbose`, console: true}
             ]
         }));
+};
+let lintJS = () => {
+    return src(`js/*.js`)
+        .pipe(jsLinter())
+        .pipe(jsLinter.formatEach(`compact`, process.stderr));
 };
 let serve = () => {
     browserSync({
@@ -32,4 +38,5 @@ let serve = () => {
 };
 exports.validateHTML = validateHTML;
 exports.lintCSS = lintCSS;
+exports.lintJS = lintJS;
 exports.default = serve;
