@@ -76,4 +76,5 @@ exports.compressJS = compressJS;
 exports.compressCSS = compressCSS;
 exports.transpileJSForDev = transpileJSForDev;
 exports.transpileJSForProd = transpileJSForProd;
+exports.dev=series(validateHTML, lintCSS, lintJS, transpileJSForDev, serve);
 exports.default = serve;
