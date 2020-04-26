@@ -32,4 +32,7 @@ window.onload = () => {
         else{recipe.innerHTML=caliRice;}
         title.innerHTML=riceType;
     };
+
+    ounces.addEventListener(`input`,ounceInput);
+    riceSelector.addEventListener(`input`,typeInput);
 };
