@@ -46,8 +46,8 @@ let compressJS = () => {
 
 let compressCSS = () => {
     return src(`css/*.css`)
-	.pipe(cssCompressor())
-	.pipe(dest(`prod/css/`));
+        .pipe(cssCompressor())
+        .pipe(dest(`prod/css/`));
 };
 
 let transpileJSForDev = () => {
@@ -71,7 +71,7 @@ let serve = () => {
         server: {       // end of a series of tasks.
             baseDir: [
                 `html`,
-		`temp`
+                `temp`
             ]
         }
     });
@@ -90,5 +90,5 @@ exports.compressCSS = compressCSS;
 exports.transpileJSForDev = transpileJSForDev;
 exports.transpileJSForProd = transpileJSForProd;
 exports.dev=series(validateHTML, lintCSS, lintJS, transpileJSForDev, serve);
-exports.prod=series(compressHTML, compressCSS, compressJS, transpileJSForProd);
+exports.build=series(compressHTML, compressCSS, compressJS, transpileJSForProd);
 exports.default = serve;
