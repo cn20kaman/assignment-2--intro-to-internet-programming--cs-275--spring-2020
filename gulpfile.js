@@ -52,6 +52,11 @@ let compressCSS = () => {
         .pipe(dest(`prod/css/`));
 };
 
+let copyCSSForDev = () => {
+    return src(`css/*.css`)
+        .pipe(dest(`temp/css/`));
+};
+
 let transpileJSForDev = () => {
     return src(`js/*.js`)
         .pipe(babel())
@@ -89,6 +94,7 @@ exports.lintJS = lintJS;
 exports.compressHTML = compressHTML;
 exports.compressJS = compressJS;
 exports.compressCSS = compressCSS;
+exports.copyCSSForDev = copyCSSForDev;
 exports.transpileJSForDev = transpileJSForDev;
 exports.transpileJSForProd = transpileJSForProd;
 exports.dev=series(validateHTML, lintCSS, lintJS, transpileJSForDev, serve);
