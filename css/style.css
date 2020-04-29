@@ -16,5 +16,6 @@ form {
   border-radius: 1em;
   padding: 2em;
   width: 50%;
+  display: flex;
 }
 }
