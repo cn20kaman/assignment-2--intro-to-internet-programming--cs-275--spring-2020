@@ -8,5 +8,6 @@ h1 {
   color: hsla(0, 0%, 32%, 1);
   font-size: 3.125em;
   font-weight: 1500;
+  text-transform: uppercase;
 }
 }
