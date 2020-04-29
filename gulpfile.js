@@ -80,7 +80,9 @@ let serve = () => {
         }
     });
 
-    watch([`html/**/*.html`,`css/*.css`,`js/*.js`]).on(`change`, reload);
+    watch(`js/*.js`, series(lintJS, transpileJSForDev)).on(`change`, reload);
+    watch(`css/*.css`, series(lintCSS, copyCSSForDev)).on(`change`, reload);
+    watch(`html/**/*.html`, series(validateHTML)).on(`change`, reload);
 };
 
 
