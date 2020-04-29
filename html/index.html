@@ -11,13 +11,17 @@
   <h1>Rice Recipes</h1>
   <main>
     <form method="post" onsubmit="return false;">
+      <div>
       <label for="type-select">Choose a type of rice:</label>
       <select name="riceType" id="type-select">
         <option value="White Rice">White Rice</option>
         <option value="Sprouted California Rice">Sprouted California Rice</option>
       </select
+    </div>
+    <div>
       <label for="ounces">Number of Ounces:</label>
       <input type="number" name="numOfOunces" id="ounces" min="1" value="1"/>
+    </div>
     </form>
     <h2 id="title"></h2>
     <p id="recipe"></p>
