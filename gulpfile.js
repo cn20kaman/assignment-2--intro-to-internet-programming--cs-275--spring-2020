@@ -45,6 +45,7 @@ let compressJS = () => {
         .pipe(dest(`prod/js/`));
 };
 
+//Prod Only
 let compressCSS = () => {
     return src(`css/*.css`)
         .pipe(cssCompressor())
