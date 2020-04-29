@@ -34,7 +34,6 @@ let lintJS = () => {
 let compressHTML = () => {
     return src(`html/*.html`)
         .pipe(htmlCompressor({collapseWhitespace: true}))
-        .pipe(dest(`prod/html`));
         .pipe(dest(`prod`));
 };
 //Prod Only
@@ -44,7 +43,6 @@ let compressJS = () => {
         .pipe(jsCompressor())
         .pipe(dest(`prod/js/`));
 };
-
 //Prod Only
 let compressCSS = () => {
     return src(`css/*.css`)
@@ -68,7 +66,6 @@ let transpileJSForProd = () => {
         .pipe(babel())
         .pipe(jsCompressor())
         .pipe(dest(`prod/js/`));
-
 };
 
 let serve = () => {
