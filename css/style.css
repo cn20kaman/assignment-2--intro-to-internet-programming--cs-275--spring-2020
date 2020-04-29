@@ -21,4 +21,8 @@ form {
   flex-wrap: wrap;
   margin-bottom: 2.094em;
 }
+
+div {
+  padding: 1em;
+}
 }
