@@ -15,5 +15,6 @@ form {
   background-color: hsla(185, 51%, 87%, 1);
   border-radius: 1em;
   padding: 2em;
+  width: 50%;
 }
 }
